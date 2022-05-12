@@ -1,25 +1,29 @@
 from urllib import response
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import Question,Choice
 # Create your views here.
 def index(request):
-   choices = Choice.objects.filter(question_id=1)
-   choices1 =Choice.objects.filter()
-   return render(request,'firstapp/home.html',{"choices":choices})
+   question_list = Question.objects.all()
+   output = ', '.join([q.question_text for q in question_list])
+   return render(request, 'firstapp/home.html', {"question_list":question_list})
+
+def deatil(request,pk):
+    choices = Choice.objects.filter(question_id=pk)
+    return render(request,'firstapp/detail.html',{"choices":choices, "question_id":pk})
 
 
-def deatil(request,question_id):
-    return HttpResponse("looking question %s", question_id)
+
+       
 
 
-def results(request,question_id):
-    response="looking question %s"
-    return HttpResponse(response % question_id)
+# def results(request,question_id):
+#     response="looking question %s"
+#     return HttpResponse(response % question_id)
 
 
-def vote(request,question_id):
-    return HttpResponse("looking question %s", question_id)
+# def vote(request,question_id):
+#     return HttpResponse("looking question %s", question_id)
 
 
 

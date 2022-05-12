@@ -25,6 +25,6 @@ def studentlist(request):
 
 
 
-class student(viewsets.ModelViewSet):
-   queryset = Student.objects.all()
-   serializer_class = studentserializer
+# class studentdene(request):
+#   s1=
+#   s2=

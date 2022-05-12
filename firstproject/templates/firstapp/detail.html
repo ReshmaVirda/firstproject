@@ -1,0 +1,8 @@
+
+<ul>
+{% for choice in choices %}
+    <li>{{ choice.choice_text }}</li>
+    
+{% endfor %}
+<a href="{% url 'index' %}"><button type="submit">Back</button></a>
+</ul>

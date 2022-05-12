@@ -1,14 +1,15 @@
-{% if choices %}
+{% if question_list %}
     <ul>
-    {% for que in choices %}
-        <li>{{ que.question }}</b>
-            {{que.choice_text}}
+    {% for question in question_list %}
+        <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+       
+       </li> 
+       {% endfor %}<br>
 
-        </li>
-
-        
-    {% endfor %}
-    </ul>
+      <a href="{% url 'addnew' %}"> <button type="submit">Add New</button></a>
+    </ul> 
+   
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+

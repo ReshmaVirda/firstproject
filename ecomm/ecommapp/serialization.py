@@ -8,4 +8,6 @@ from rest_framework import status
 class studentserializer(serializers.ModelSerializer):
     class Meta:
         model=Student
-        fields= ('Name','City')
+        fields= ('id',
+                 'Name',
+                 'City')
