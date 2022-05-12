@@ -13,8 +13,24 @@ def deatil(request,pk):
     return render(request,'firstapp/detail.html',{"choices":choices, "question_id":pk})
 
 
+from django.template import loader
+from django.http import HttpResponseRedirect
+def add(request):
+  template = loader.get_template('firstapp/add.html')
 
+  return HttpResponse(template.render({}, request))
        
+
+from django.urls import reverse
+
+def addrecord(request):
+  Question.objects.create(question_text=request.POST['last'])
+  return HttpResponseRedirect(reverse('firstapp:index', ))
+
+  
+  breakpoint()
+
+
 
 
 # def results(request,question_id):

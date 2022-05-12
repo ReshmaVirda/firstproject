@@ -1,12 +1,13 @@
 {% if question_list %}
     <ul>
     {% for question in question_list %}
-        <li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>
+        <li><a href="{% url 'firstapp:jamil' question.id %}">{{ question.question_text }}</a></li>
        
        </li> 
        {% endfor %}<br>
 
-      <a href="{% url 'addnew' %}"> <button type="submit">Add New</button></a>
+      <a href="/add/">Add member</a>
+
     </ul> 
    
 {% else %}
