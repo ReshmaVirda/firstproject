@@ -8,7 +8,6 @@ urlpatterns = [
     path('detail/<int:pk>',views.deatil,name="jamil"),
     path('add/', views.add, name='add'),
     
-    path('add/addrecord/', views.addrecord, name='addrecord'),
 
 
     # path('results/<int:question_id>',views.results,name="results"),
