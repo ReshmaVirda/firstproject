@@ -7,10 +7,29 @@
 {% for post in question_list %}
     <article class="post">
         <time class="date">
-           <a href="{% url 'firstapp:detail' post.id %}">{{ post.question_text }}</a><br>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">question Name</th>
+                        </tr>
+                  
+                </thead>
+                <tbody>
+                    
+                  <tr>
+                    <th scope="row">{{ post.id }}</th>
+                    <td><a href="{% url 'firstapp:detail' post.id %}">{{post.question_text }}</a></td>
+                    
+                    <td><a href="{% url 'firstapp:delete' post.id %}" ><button type="submit">Delete</button></a></td>
+                    <td><a href="{% url 'firstapp:update' post.id %}"><button type="submit">Update</button></a></td>
+                </tr>
+                
+                  
+                </tbody>
+              </table>
         </time>
-        <h2><a href="">{{ post.title }}</a></h2>
-        {{ post.text|linebreaksbr }}
+        
     </article>
 {% endfor %}<br>
 

@@ -27,6 +27,26 @@ def add(request):
       )
     return HttpResponseRedirect(reverse('firstapp:index', ))
 
+
+def update(request,pk):
+   question = Question.objects.get(id=pk)
+   if request.method != "POST":
+     template = loader.get_template('firstapp/update.html')
+
+     return HttpResponse(template.render({"question":question}, request))
+
+
+def delete(requset,pk):
+  deletelist = Question.objects.get(id=pk)
+  deletelist.delete()
+  return HttpResponseRedirect(reverse('firstapp:detail', ))
+        
+   
+
+
+
+
+
   
 
 
