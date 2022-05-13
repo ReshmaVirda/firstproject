@@ -7,11 +7,13 @@
 {% for post in question_list %}
     <article class="post">
         <time class="date">
-            {{ post.question_text }}
+           <a href="{% url 'firstapp:detail' post.id %}">{{ post.question_text }}</a><br>
         </time>
         <h2><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
+        {{ post.text|linebreaksbr }}
     </article>
-{% endfor %}
+{% endfor %}<br>
+
+<a href="{% url 'firstapp:add' %}"><button type="submit">Add New</button> </a>
 
 {% endblock %}

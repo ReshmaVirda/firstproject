@@ -5,7 +5,7 @@ app_name = 'firstapp'
 
 urlpatterns = [
     path('',views.index,name="index"),
-    path('detail/<int:pk>',views.deatil,name="jamil"),
+    path('detail/<int:pk>',views.deatil,name="detail"),
     path('add/', views.add, name='add'),
     
 

@@ -1,6 +1,7 @@
-<h1>Add member</h1>
+{% extends 'firstapp/base.html' %}
 
-<form action="add/app" method="post">
+{% block content %}
+<form action="{% url 'firstapp:add' %}" method="post">
 {% csrf_token %}
 First Name:<br>
 <input name="first">
@@ -10,3 +11,4 @@ Last Name:<br>
 <br><br>
 <input type="submit" value="Submit">
 </form>
+{% endblock %}
