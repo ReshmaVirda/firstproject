@@ -6,7 +6,7 @@ from .models import Question,Choice
 def index(request):
    question_list = Question.objects.all()
    output = ', '.join([q.question_text for q in question_list])
-   return render(request, 'firstapp/home.html', {"question_list":question_list})
+   return render(request, 'firstapp/post_list.html', {"question_list":question_list})
 
 def deatil(request,pk):
     choices = Choice.objects.filter(question_id=pk)
