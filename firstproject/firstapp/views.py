@@ -29,11 +29,15 @@ def add(request):
 
 
 def update(request,pk):
-   question = Question.objects.get(id=pk)
    if request.method != "POST":
+     question = Question.objects.get(id=pk)
      template = loader.get_template('firstapp/update.html')
 
      return HttpResponse(template.render({"question":question}, request))
+
+   else:
+       Question.objects.update(question_text=request.POST or None, instance = question)
+       return HttpResponseRedirect(reverse('firstapp:index', ))
 
 
 def delete(requset,pk):
