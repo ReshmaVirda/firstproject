@@ -22,7 +22,7 @@ def add(request):
     return HttpResponse(template.render({}, request))
   else:
     Question.objects.create(
-      question_text=request.POST['last']
+      question_text=request.POST['first']
       
       )
     return HttpResponseRedirect(reverse('firstapp:index', ))
@@ -36,14 +36,17 @@ def update(request,pk):
      return HttpResponse(template.render({"question":question}, request))
 
    else:
-       Question.objects.update(question_text=request.POST or None, instance = question)
-       return HttpResponseRedirect(reverse('firstapp:index', ))
+        question = Question.objects.get(id=pk)
+        question.question_text = request.POST['question_text']
+        question.save()
+       
+        return HttpResponseRedirect(reverse('firstapp:index', ))
 
 
 def delete(requset,pk):
   deletelist = Question.objects.get(id=pk)
   deletelist.delete()
-  return HttpResponseRedirect(reverse('firstapp:detail', ))
+  return HttpResponseRedirect(reverse('firstapp:index', ))
         
    
 
