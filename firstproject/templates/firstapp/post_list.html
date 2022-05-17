@@ -6,6 +6,18 @@
 {% block content %}
 <!-- <a href="{% url 'firstapp:add' %}"><button type="submit">Add New</button> </a> -->
 
+<form action="{% url 'firstapp:add' %}" method="post">
+    {% csrf_token %}
+    First Name:<br>
+    <input name="first">
+    <br><br>
+    Last Name:<br>
+    <input name="last">
+    <br><br>
+    <input type="submit" value="Submit">
+    </form>
+    <!-- <a href="{% url 'firstapp:index' %}"><button type="submit">Back</button></a> -->
+
     <article class="post">
         <time class="date">
             <table class="table">
