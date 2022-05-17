@@ -16,6 +16,11 @@
     <br><br>
     <input type="submit" value="Submit">
     </form>
+    <form action="{% url 'firstapp:index' %}"  method="get" >
+        {% csrf_token %}
+     <input type="search" placeholder="search" aria-label="search" name="search">
+     <button type="submit">Search</button>   
+    </form>
     <!-- <a href="{% url 'firstapp:index' %}"><button type="submit">Back</button></a> -->
 
     <article class="post">

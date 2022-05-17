@@ -2,11 +2,23 @@ from urllib import response
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from .models import Question,Choice
+from django.db.models import Q 
 # Create your views here.
 def index(request):
    question_list = Question.objects.all()
    output = ', '.join([q.question_text for q in question_list])
-   return render(request, 'firstapp/post_list.html', {"question_list":question_list})
+   search_list = request.GET.get('search')
+   if search_list:
+     qry = Question.objects.filter(question_text__icontains = search_list)
+     
+   else:
+     qry = Question.objects.all()
+
+
+
+  
+
+   return render(request, 'firstapp/post_list.html', {"question_list":question_list, "qry":qry})
 
 def deatil(request,pk):
     choices = Choice.objects.filter(question_id=pk)
