@@ -13,6 +13,16 @@
               <h1><a href="/">Django</a></h1>
           </div>
         </header>
+        <form action="{% url 'firstapp:index' %}"  method="post" class="demo" style="text-align: right;" >
+            {% csrf_token %}
+         <input type="search" placeholder="search" aria-label="search" name="search">
+         <button type="submit">Search</button> 
+         <br/>
+         <br/>  
+         {% for query in qry %}
+            {{ query }}
+         {% endfor%}
+        </form>
 
         {% block content %}
 

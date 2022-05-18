@@ -8,18 +8,17 @@ from django.db.models import Q
 def index(request):
    question_list = Question.objects.all()
    output = ', '.join([q.question_text for q in question_list])
-   search_list = request.GET.get('search',None)
-   if search_list is not None:
-     qry = Question.objects.filter(question_text__icontains = search_list)
-     
-   else:
-     qry = Question.objects.all()
-
-
-   print(qry)
   
+   if request.method == "POST":
+      search_list= request.POST['search']
+  
+      qry = Question.objects.filter(question_text__icontains = search_list)
+      return render(request, 'firstapp/post_list.html', {"search_list":search_list, "qry":qry })
+   else:
+      #return render(request, 'firstapp/post_list.html', {})
 
-   return render(request, 'firstapp/post_list.html', {"question_list":question_list, "qry":qry})
+
+    return render(request, 'firstapp/post_list.html', {"question_list":question_list, })
 
 def deatil(request,pk):
     choices = Choice.objects.filter(question_id=pk)
